@@ -7,6 +7,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -60,8 +61,14 @@
     
     cell.titleLabel.text = movie[@"title"];
     cell.Synopsis.text = movie[@"overview"];
-    
     cell.ratingLabel.text = [NSString stringWithFormat:@"%@",movie[@"vote_average"]];
+    
+    NSString *baseURLString = @"https://image.tmdb.org/t/p/original";
+    
+    NSString *posterSuffix = movie[@"poster_path"];
+    NSString *posterImage = [baseURLString stringByAppendingString:posterSuffix];
+    NSURL *posterURL = [NSURL URLWithString:posterImage];
+    [cell.posterView setImageWithURL:posterURL];
     
     //cell.textLabel.text = movie[@"title"];
     return cell;
