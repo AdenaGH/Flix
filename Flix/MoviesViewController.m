@@ -6,6 +6,7 @@
 //
 
 #import "MoviesViewController.h"
+#import "MovieCell.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,7 +37,7 @@
                //NSLog(@"%@", dataDictionary);
                self.movies =dataDictionary[@"results"];
                for (NSDictionary *movie in self.movies) {
-                   NSLog(@"%@", movie[@"title"]);
+                   NSLog(@"%@", movie);
                }
                [self.tableView reloadData]; //calls data source methods again
                // TODO: Get the array of movies DONE see line 13
@@ -53,9 +54,14 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //makes it the cell we made
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     NSDictionary *movie =self.movies[indexPath.row];
+    
+    cell.titleLabel.text = movie[@"title"];
+    cell.Synopsis.text = movie[@"overview"];
+    
+    cell.ratingLabel.text = [NSString stringWithFormat:@"%@",movie[@"vote_average"]];
     
     //cell.textLabel.text = movie[@"title"];
     return cell;
@@ -63,7 +69,6 @@
 
 /*
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

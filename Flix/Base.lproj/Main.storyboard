@@ -66,6 +66,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="Synopsis" destination="hl0-mA-HBk" id="3ML-zV-eIv"/>
+                                            <outlet property="avgBaseLabel" destination="42g-ns-582" id="mrm-to-rEy"/>
+                                            <outlet property="ratingLabel" destination="Mfd-qL-zdK" id="jXd-8J-3Vc"/>
                                             <outlet property="titleLabel" destination="uAv-NO-VnT" id="CAD-9f-L47"/>
                                         </connections>
                                     </tableViewCell>
