@@ -16,6 +16,7 @@
 		ECCD7B9F26838F2400E25887 /* FlixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD7B9E26838F2400E25887 /* FlixTests.m */; };
 		ECCD7BAA26838F2500E25887 /* FlixUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD7BA926838F2500E25887 /* FlixUITests.m */; };
 		ECCD7BB92683971D00E25887 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD7BB82683971D00E25887 /* MoviesViewController.m */; };
+		ECCD7BBF2683C79F00E25887 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCD7BBE2683C79F00E25887 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		ECCD7BAB26838F2500E25887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECCD7BB72683971D00E25887 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		ECCD7BB82683971D00E25887 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		ECCD7BBD2683C79F00E25887 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		ECCD7BBE2683C79F00E25887 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 		ECCD7BBB2683990300E25887 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ECCD7BBD2683C79F00E25887 /* MovieCell.h */,
+				ECCD7BBE2683C79F00E25887 /* MovieCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECCD7B8426838F2300E25887 /* AppDelegate.m in Sources */,
+				ECCD7BBF2683C79F00E25887 /* MovieCell.m in Sources */,
 				ECCD7BB92683971D00E25887 /* MoviesViewController.m in Sources */,
 				ECCD7B9526838F2400E25887 /* main.m in Sources */,
 				ECCD7B8726838F2300E25887 /* SceneDelegate.m in Sources */,

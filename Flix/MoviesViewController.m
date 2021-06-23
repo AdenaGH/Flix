@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Links the correct view controller thing to self
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
@@ -38,9 +39,9 @@
                    NSLog(@"%@", movie[@"title"]);
                }
                [self.tableView reloadData]; //calls data source methods again
-               // TODO: Get the array of movies
-               // TODO: Store the movies in a property to use elsewhere
-               // TODO: Reload your table view data
+               // TODO: Get the array of movies DONE see line 13
+               // TODO: Store the movies in a property to use elsewhere DONE
+               // TODO: Reload your table view data DONE: see line 40
            }
        }];
     [task resume];
@@ -51,11 +52,12 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    //makes it the cell we made
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     NSDictionary *movie =self.movies[indexPath.row];
     
-    cell.textLabel.text = movie[@"title"];
+    //cell.textLabel.text = movie[@"title"];
     return cell;
 }
 
