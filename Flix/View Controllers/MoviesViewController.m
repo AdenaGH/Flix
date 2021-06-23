@@ -11,8 +11,9 @@
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @end
 
@@ -24,7 +25,16 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
-    
+    [self fetchMovies];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
+    //[self.tableView addSubview:self.refreshControl];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+
+}
+
+-(void)fetchMovies {
+    [self.loadingIndicator startAnimating];
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=9ddcd453f18543778f55fdb2654feb24"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -46,8 +56,11 @@
                // TODO: Reload your table view data DONE: see line 40
            }
        }];
+   
+    [self.refreshControl endRefreshing];
     [task resume];
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.movies.count;
     
@@ -71,7 +84,9 @@
     [cell.posterView setImageWithURL:posterURL];
     
     //cell.textLabel.text = movie[@"title"];
+    [self.loadingIndicator stopAnimating];
     return cell;
+    
 }
 
 /*
