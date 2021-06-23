@@ -7,7 +7,8 @@
 
 #import "MoviesViewController.h"
 
-@interface MoviesViewController ()
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *movies;
 
@@ -17,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=9ddcd453f18543778f55fdb2654feb24"];
@@ -30,8 +33,8 @@
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                
                //NSLog(@"%@", dataDictionary);
-               NSArray *movies =dataDictionary[@"results"];
-               for (NSDictionary *movie in movies) {
+               self.movies =dataDictionary[@"results"];
+               for (NSDictionary *movie in self.movies) {
                    NSLog(@"%@", movie[@"title"]);
                }
 
@@ -41,6 +44,16 @@
            }
        }];
     [task resume];
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"row: %d, section %d", indexPath.row, indexPath.section];
+    
+    return cell;
 }
 
 /*
