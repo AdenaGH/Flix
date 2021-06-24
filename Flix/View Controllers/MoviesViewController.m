@@ -8,6 +8,7 @@
 #import "MoviesViewController.h"
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -41,6 +42,29 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
+               NSLog(@"NO WIFIIIIIIIIII");
+               UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Your wifi sucks."
+               message:@"How am I supposed to check for movies without a stable internet connection?" preferredStyle:(UIAlertControllerStyleAlert)];
+               [self presentViewController:alert animated:YES completion:^{
+                   // optional code for what happens after the alert controller has finished presenting
+               }];
+               // create a cancel action
+               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Dang"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                        // handle cancel response here. Doing nothing will dismiss the view.
+                                                                 }];
+               // add the cancel action to the alertController
+               [alert addAction:cancelAction];
+
+               // create an OK action
+               UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Dang again"
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction * _Nonnull action) {
+                                                                        // handle response here.
+                                                                }];
+               // add the OK action to the alert controller
+               [alert addAction:okAction];
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -89,13 +113,20 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSLog(@"Tapping on a movie :P");
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.movies[indexPath.row];
+    
+    DetailsViewController *detailViewController = [segue destinationViewController];
+    detailViewController.movie = movie;
 }
-*/
+    
 
 @end
