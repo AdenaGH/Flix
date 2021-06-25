@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseLabel;
+@property (nonatomic, strong) NSDictionary *videos;
 
 @end
 
@@ -41,6 +42,41 @@
     self.ratingLabel.text = [NSString stringWithFormat:@"%@", self.movie[@"vote_average"]];
     self.releaseLabel.text = self.movie[@"release_date"];
 }
+
+/* -(void)fetchMovieInfo {
+    //[self.loadingIndicator startAnimating];
+    NSString *vidBase = @"https://api.themoviedb.org/3/movie/";
+    NSString *movieID = [NSString stringWithFormat:@"%@", self.movie[@"id"]];
+    NSString *vidTrailer = [vidBase stringByAppendingString:movieID];
+    NSString *vidEnd = @"/videos?api_key=9ddcd453f18543778f55fdb2654feb24";
+    NSString *fullVidLink = [vidTrailer stringByAppendingString:vidEnd];
+
+    NSURL *vidURL = [NSURL URLWithString:fullVidLink];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:vidURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           if (error != nil) {
+               NSLog(@"%@", [error localizedDescription]);
+               
+           }
+           else {
+               NSDictionary *movieInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               
+               //NSLog(@"%@", dataDictionary);
+               self.videos = movieInfo;
+               for (NSDictionary *vid in self.videos) {
+                   NSLog(@"%@", vid);
+               }
+               //[self.view reloadData]; //calls data source methods again
+            
+           }
+       }];
+   
+    //[self.refreshControl endRefreshing];
+    [task resume];
+}
+*/
 
 /*
 #pragma mark - Navigation
