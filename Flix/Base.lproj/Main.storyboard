@@ -100,7 +100,7 @@
         <scene sceneID="dM6-IR-tKp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xdG-J9-qjZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="uhb-vE-cpj"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="ticket_tabbar_icon" id="uhb-vE-cpj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3lW-cR-qPd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -203,11 +203,11 @@
             </objects>
             <point key="canvasLocation" x="926" y="-589"/>
         </scene>
-        <!--Item-->
+        <!--Grid View-->
         <scene sceneID="jc7-dZ-jAM">
             <objects>
                 <navigationController id="Ry3-DL-t9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mBH-LG-FxK"/>
+                    <tabBarItem key="tabBarItem" title="Grid View" image="square.grid.3x2.fill" catalog="system" id="mBH-LG-FxK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sc0-Fc-wuK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -229,31 +229,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Yw-bxL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="404" height="896"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="scrollIndicatorInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                <inset key="scrollIndicatorInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DLy-wg-1k0">
-                                    <size key="itemSize" width="135" height="203"/>
+                                    <size key="itemSize" width="122" height="203"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionCell" id="tME-NA-79H" customClass="MovieCollectionCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="203"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="203"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qtH-CJ-wvF">
-                                            <rect key="frame" x="0.0" y="0.0" width="135" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="122" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sgd-xR-SKq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="203"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="203"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="135" height="203"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="122" height="203"/>
                                         <connections>
                                             <outlet property="posterView" destination="Sgd-xR-SKq" id="MS2-zQ-vJd"/>
                                         </connections>
@@ -275,6 +276,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
+        <image name="ticket_tabbar_icon" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
