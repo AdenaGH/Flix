@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UILabel *releaseLabel;
 
 @end
 
@@ -29,7 +30,8 @@
     NSURL *posterURL = [NSURL URLWithString:posterImage];
     [self.posterView setImageWithURL:posterURL];
     
-    
+    NSString *movieID = [NSString stringWithFormat:@"%@", self.movie[@"id"]];
+    //NSInteger *realID = (NSInteger *) movieID;
     NSString *backdropSuffix = self.movie[@"backdrop_path"];
     NSString *backdropImage = [baseURLString stringByAppendingString:backdropSuffix];
     NSURL *backdropURL = [NSURL URLWithString:backdropImage];
@@ -37,6 +39,7 @@
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"overview"];
     self.ratingLabel.text = [NSString stringWithFormat:@"%@", self.movie[@"vote_average"]];
+    self.releaseLabel.text = self.movie[@"release_date"];
 }
 
 /*

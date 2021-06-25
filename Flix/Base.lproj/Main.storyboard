@@ -136,7 +136,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie Title Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRw-KW-DK6">
-                                        <rect key="frame" x="131" y="289" width="257" height="54"/>
+                                        <rect key="frame" x="131" y="275" width="257" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                         <nil key="textColor"/>
@@ -164,6 +164,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release Date Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39z-i0-Ksa">
+                                        <rect key="frame" x="131" y="317" width="137" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="kzP-qg-8S3"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ur6-eP-KlY"/>
@@ -177,6 +184,7 @@
                         <outlet property="backdropView" destination="mye-Na-AYs" id="ZWq-Bb-Brn"/>
                         <outlet property="posterView" destination="eg1-D1-V4U" id="tJx-Xy-hEJ"/>
                         <outlet property="ratingLabel" destination="0Iu-Jm-kdU" id="PVr-dj-ndj"/>
+                        <outlet property="releaseLabel" destination="39z-i0-Ksa" id="Lfx-Oe-j6Z"/>
                         <outlet property="synopsisLabel" destination="vEr-87-TCq" id="PyA-rU-ka5"/>
                         <outlet property="titleLabel" destination="BRw-KW-DK6" id="dOP-ee-KtV"/>
                     </connections>
@@ -257,6 +265,7 @@
                                         <size key="customSize" width="122" height="203"/>
                                         <connections>
                                             <outlet property="posterView" destination="Sgd-xR-SKq" id="MS2-zQ-vJd"/>
+                                            <segue destination="rWc-Mq-g4f" kind="show" id="fpf-2S-NfS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -275,6 +284,9 @@
             <point key="canvasLocation" x="1734.7826086956522" y="897.99107142857133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fpf-2S-NfS"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <image name="ticket_tabbar_icon" width="25" height="25"/>
